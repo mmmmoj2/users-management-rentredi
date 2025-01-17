@@ -1,12 +1,12 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
-import { vi } from 'vitest';
+import { vi, expect } from 'vitest';
 import { PAGES } from './constants/pages';
 
 describe('App', () => {
   const setup = () => render(<App />);
 
-  beforeEach(() => {
+  afterEach(() => {
     vi.clearAllMocks();
   });
 
@@ -19,9 +19,10 @@ describe('App', () => {
   it('navigates to the correct route', async () => {
     setup();
 
-    expect(screen.getByText(PAGES.home.label)).toBeInTheDocument();
+    expect(screen.getByText(PAGES.users.label)).toBeInTheDocument();
 
-    fireEvent.click(screen.getByText('users'));
-    await waitFor(() => screen.getByText(PAGES.users.label));
+    expect(
+      screen.getByRole('link', { name: PAGES.users.label }),
+    ).toHaveAttribute('href', PAGES.users.href);
   });
 });

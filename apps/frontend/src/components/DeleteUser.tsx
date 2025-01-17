@@ -15,6 +15,7 @@ export const DeleteUser: FC<DeleteUserProps> = ({ open, onClose, userId }) => {
   const { setNotification } = useAppContext();
   const { deleteUser, isLoading } = useMutateUsers();
   const navigate = useNavigate();
+  console.log('test');
 
   const onDelete = async (confirm?: boolean) => {
     if (confirm) {

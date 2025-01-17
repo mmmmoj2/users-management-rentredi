@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { API, axios } from '../utils/api';
 import { CreateUserRequest, UpdateUserRequest } from '../constants/users';
 import { useAppContext } from './useAppState';
-import { getListUsersQueryKey, DEFAULT_USERS_PAGE_SIZE } from './useListUsers';
+import { getListUsersQueryKey } from './useListUsers';
 import { getUserQueryKey } from './useGetUser';
 import { getListUsersInMapKey } from './useListUsersInMap';
 
@@ -14,7 +14,7 @@ export const useMutateUsers = () => {
     mutationFn: async (data: CreateUserRequest) => {
       const res = await axios.post(API.users, data);
       await queryClient.invalidateQueries({
-        queryKey: getListUsersQueryKey(DEFAULT_USERS_PAGE_SIZE),
+        queryKey: getListUsersQueryKey(),
       });
       await queryClient.invalidateQueries({
         queryKey: getListUsersInMapKey(0, 0),
@@ -34,7 +34,7 @@ export const useMutateUsers = () => {
     mutationFn: async (userId: string) => {
       await axios.delete(API.userDetails(userId));
       await queryClient.invalidateQueries({
-        queryKey: getListUsersQueryKey(DEFAULT_USERS_PAGE_SIZE),
+        queryKey: getListUsersQueryKey(),
       });
       await queryClient.invalidateQueries({
         queryKey: getUserQueryKey(userId),
@@ -56,7 +56,7 @@ export const useMutateUsers = () => {
     mutationFn: async (data: UpdateUserRequest) => {
       const res = await axios.patch(API.userDetails(data.id), data);
       await queryClient.invalidateQueries({
-        queryKey: getListUsersQueryKey(DEFAULT_USERS_PAGE_SIZE),
+        queryKey: getListUsersQueryKey(),
       });
       await queryClient.invalidateQueries({
         queryKey: getUserQueryKey(data.id),

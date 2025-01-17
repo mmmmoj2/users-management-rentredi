@@ -61,6 +61,7 @@ export const CreateUser = () => {
                   variant="primary"
                   onClick={() => handleSubmit()}
                   loading={isLoading}
+                  data-testid="create-user"
                 >
                   Create
                 </Button>

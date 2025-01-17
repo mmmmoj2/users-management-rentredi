@@ -20,6 +20,7 @@ export const UsersMap: FC<UsersMapProps> = forwardRef(
           padding: '0 25px',
           marginTop: '20px',
         }}
+        data-testid="map-container"
       >
         <MapContainer
           center={center}

@@ -5,11 +5,8 @@ import { ListUsersDto } from '../constants/users';
 
 export const DEFAULT_USERS_PAGE_SIZE = 10;
 
-export const getListUsersQueryKey = (pageSize: number, searchQ?: string) => [
-  'users',
-  pageSize,
-  searchQ,
-];
+export const getListUsersQueryKey = (pageSize?: number, searchQ?: string) =>
+  pageSize ? ['users', pageSize, searchQ] : ['users'];
 
 export const useListUsers = () => {
   const [pageSize, setPageSize] = useState(DEFAULT_USERS_PAGE_SIZE);
@@ -45,6 +42,7 @@ export const useListUsers = () => {
     hasNextPage,
     isFetching,
     isFetchingNextPage,
+    refetch,
   } = useInfiniteQuery<ListUsersDto, Error>({
     queryKey: getListUsersQueryKey(pageSize, searchQ),
     queryFn: fetchProjects,
@@ -68,5 +66,6 @@ export const useListUsers = () => {
     totalPages: Math.ceil(users.length / pageSize),
     searchQ,
     setSearchQ,
+    refetch,
   };
 };

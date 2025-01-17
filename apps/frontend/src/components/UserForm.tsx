@@ -25,6 +25,7 @@ export const UserForm = () => {
           }
         >
           <Input
+            data-testid="user-name"
             type="text"
             name="name"
             value={values?.['name']}
@@ -41,6 +42,7 @@ export const UserForm = () => {
           }
         >
           <Input
+            data-testid="user-zip"
             name="zip"
             value={values?.['zip']}
             onBlur={() => setFieldTouched('zip')}

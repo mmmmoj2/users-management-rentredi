@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "frontend-e2e"
   ],
   "scripts": {
     "dev": "turbo run dev",

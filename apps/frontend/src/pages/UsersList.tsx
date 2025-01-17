@@ -22,6 +22,7 @@ export const UsersList = () => {
     setCurrentPageIndex,
     searchQ,
     setSearchQ,
+    refetch,
   } = useListUsers();
   const { setBreadcrumps, setActivePath } = useAppContext();
 
@@ -76,7 +77,10 @@ export const UsersList = () => {
       {!!selectedItems.length && (
         <DeleteUser
           open={showDeleteUser}
-          onClose={() => setShowDeleteUser(false)}
+          onClose={() => {
+            setShowDeleteUser(false);
+            refetch();
+          }}
           userId={selectedItems[0]?.id}
         />
       )}

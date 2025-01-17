@@ -52,7 +52,11 @@ export const TableAction: FC<TableActionProps> = ({
       >
         Actions
       </ButtonDropdown>
-      <Button variant="primary" onClick={() => navigate(PAGES.createUser.href)}>
+      <Button
+        variant="primary"
+        onClick={() => navigate(PAGES.createUser.href)}
+        data-testid="create-user-btn"
+      >
         Create user
       </Button>
     </SpaceBetween>
