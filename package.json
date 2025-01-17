@@ -1,0 +1,21 @@
+{
+  "name": "nodejs-user-management-short-take-home",
+  "version": "1.0.0",
+  "description": "",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "backend": "turbo run backend#dev",
+    "frontend": "turbo run frontend#dev",
+    "build": "turbo run build",
+    "start": "node apps/backend/dist/main",
+    "e2e": "turbo run frontend-e2e#e2e"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
+  },
+  "keywords": [],
+  "packageManager": "^npm@10.5.1"
+}
